@@ -1,6 +1,6 @@
 import type { CellValue } from "./types";
 
-class SudokuBoard {
+export class SudokuBoard {
   private grid: CellValue[][];
 
   constructor(initial?: CellValue[][]) {
