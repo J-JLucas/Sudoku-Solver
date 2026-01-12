@@ -1,0 +1,19 @@
+{
+  "name": "sudoku-solver",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc",
+    "test": "node --import tsx --test test/*.test.ts",
+    "test:watch": "node --import tsx --test test/*.test.ts --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^25.0.6",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

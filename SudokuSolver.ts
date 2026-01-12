@@ -1,7 +1,7 @@
-import type { CellValue } from "./types";
-import { SudokuBoard } from "./SudokuBoard";
+import type { CellValue } from "./types.js";
+import { SudokuBoard } from "./SudokuBoard.js";
 
-class SudokuSolver {
+export class SudokuSolver {
 
   validateBoardState(board: SudokuBoard): boolean {
     const M = 9;
