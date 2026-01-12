@@ -1,6 +1,4 @@
-// union type of literal values
-// restricts CellValue to a subset of whatever values we like
-type CellValue = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | null;
+import type { CellValue } from "./types";
 
 class SudokuBoard {
   private grid: CellValue[][];
