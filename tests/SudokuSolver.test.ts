@@ -1,8 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { SudokuBoard } from "../SudokuBoard.js";
-import { SudokuSolver } from "../SudokuSolver.js";
-import type { CellValue } from "../types.js";
+import { SudokuBoard } from "../src/SudokuBoard.js";
+import { SudokuSolver } from "../src/SudokuSolver.js";
+import type { CellValue } from "../src/types.js";
 
 test("SudokuSolver: accepts empty board", () => {
   const b = new SudokuBoard();

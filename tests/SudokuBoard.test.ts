@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { SudokuBoard } from "../SudokuBoard.js";
-import type { CellValue } from "../types.js";
+import { SudokuBoard } from "../src/SudokuBoard.js";
+import type { CellValue } from "../src/types.js";
 
 test("SudokuBoard: default constructor builds a 9x9 null grid", () => {
   const b = new SudokuBoard();
