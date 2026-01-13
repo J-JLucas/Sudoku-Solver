@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "typecheck": "tsc",
-    "test": "node --import tsx --test test/*.test.ts",
-    "test:watch": "node --import tsx --test test/*.test.ts --watch"
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:watch": "node --import tsx --test tests/*.test.ts --watch"
   },
   "keywords": [],
   "author": "",
