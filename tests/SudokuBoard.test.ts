@@ -35,6 +35,29 @@ test("SudokuBoard: clone creates an independent copy", () => {
   assert.equal(b2.getCell(0, 0), 6);
 });
 
+test("SudokuBoard: isEqual confirms two separate boards are equal", () => {
+  const b1 = new SudokuBoard();
+  b1.setCell(9, 6, 7);
+
+  const b2 = new SudokuBoard();
+  b2.setCell(9, 6, 7);
+
+  assert.equal(b1.isEqual(b2), true);
+  assert.equal(b2.isEqual(b1), true);
+});
+
+
+test("SudokuBoard: isEqual confirms two separate boards are not equal", () => {
+  const b1 = new SudokuBoard();
+  b1.setCell(9, 6, 7);
+
+  const b2 = new SudokuBoard();
+  b2.setCell(1, 6, 7);
+
+  assert.equal(b1.isEqual(b2), false);
+  assert.equal(b2.isEqual(b1), false);
+});
+
 
 test("SudokuBoard: constructor rejects invalid height", () => {
   const bad: CellValue[][] = [];

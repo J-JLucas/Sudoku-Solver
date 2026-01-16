@@ -49,4 +49,16 @@ export class SudokuBoard {
     return new SudokuBoard(this.grid);
   }
 
+  isEqual(otherBoard: SudokuBoard): boolean {
+    if (this === otherBoard) return true;
+
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
+        if (this.getCell(i, j) !== otherBoard.getCell(i, j)) return false;
+      }
+    }
+
+    return true;
+  }
+
 }

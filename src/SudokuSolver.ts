@@ -3,7 +3,7 @@ import { SudokuBoard } from "./SudokuBoard.js";
 
 export class SudokuSolver {
 
-  validateBoardState(board: SudokuBoard): boolean {
+  static validateBoardState(board: SudokuBoard): boolean {
     const M = 9;
     const N = 9;
 
@@ -60,4 +60,8 @@ export class SudokuSolver {
     return true;
   }
 
+  static Solve(board: SudokuBoard): void {
+    console.log("Solving Board!");
+
+  }
 }
