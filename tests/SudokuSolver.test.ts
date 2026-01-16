@@ -107,10 +107,9 @@ test("SudokuSolver: validate SudokuSpoiler.com solved board state (expected true
   assert.equal(SudokuSolver.validateBoardState(b), true);
 });
 
-/*
 test("SudokuSolver: solve  board (expected true)", () => {
 
-  const input: (number | null)[][] = [
+  const input: CellValue[][] = [
     [5, 3, null, null, 7, null, null, null, null],
     [6, null, null, 1, 9, 5, null, null, null],
     [null, 9, 8, null, null, null, null, 6, null],
@@ -122,7 +121,7 @@ test("SudokuSolver: solve  board (expected true)", () => {
     [null, null, null, null, 8, null, null, 7, 9]
   ];
 
-  const solution: number[][] = [
+  const solution: CellValue[][] = [
     [5, 3, 4, 6, 7, 8, 9, 1, 2],
     [6, 7, 2, 1, 9, 5, 3, 4, 8],
     [1, 9, 8, 3, 4, 2, 5, 6, 7],
@@ -135,8 +134,9 @@ test("SudokuSolver: solve  board (expected true)", () => {
   ];
 
   const i = new SudokuBoard(input);
+  const s = new SudokuBoard(solution);
+  SudokuSolver.Solve(i);
 
-  assert.equal(, true);
+  assert.equal(i.isEqual(s), true);
 });
 
-*/
