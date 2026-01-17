@@ -135,8 +135,77 @@ test("SudokuSolver: solve  board (expected true)", () => {
 
   const i = new SudokuBoard(input);
   const s = new SudokuBoard(solution);
-  SudokuSolver.Solve(i);
+
+  const result = SudokuSolver.solve(i);
 
   assert.equal(i.isEqual(s), true);
+  assert.equal(result, true);
 });
 
+test("SudokuSolver: solve empty board (expected true)", () => {
+  const empty: CellValue[][] = [
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, null]
+  ];
+
+  const board = new SudokuBoard(empty);
+  const result = SudokuSolver.solve(board);
+
+  assert.equal(result, true, "empty board should be solvable");
+  // verify it's actually filled with valid values
+  assert.equal(SudokuSolver.validateBoardState(board), true, "solved board should be valid");
+  // verify no nulls remain
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      assert.notEqual(board.getCell(i, j), null, `cell [${i}][${j}] should not be null`);
+    }
+  }
+});
+
+test("SudokuSolver: solve unsolvable board (expected false)", () => {
+  // This board has two 5s in the first row - impossible to solve
+  const unsolvable: CellValue[][] = [
+    [5, 3, null, null, 7, null, null, null, 5], // two 5s in same row!
+    [6, null, null, 1, 9, 5, null, null, null],
+    [null, 9, 8, null, null, null, null, 6, null],
+    [8, null, null, null, 6, null, null, null, 3],
+    [4, null, null, 8, null, 3, null, null, 1],
+    [7, null, null, null, 2, null, null, null, 6],
+    [null, 6, null, null, null, null, 2, 8, null],
+    [null, null, null, 4, 1, 9, null, null, 5],
+    [null, null, null, null, 8, null, null, 7, 9]
+  ];
+
+  const board = new SudokuBoard(unsolvable);
+  const result = SudokuSolver.solve(board);
+
+  assert.equal(result, false, "unsolvable board should return false");
+});
+
+test("SudokuSolver: solve already completed board (expected true)", () => {
+  const completed: CellValue[][] = [
+    [5, 3, 4, 6, 7, 8, 9, 1, 2],
+    [6, 7, 2, 1, 9, 5, 3, 4, 8],
+    [1, 9, 8, 3, 4, 2, 5, 6, 7],
+    [8, 5, 9, 7, 6, 1, 4, 2, 3],
+    [4, 2, 6, 8, 5, 3, 7, 9, 1],
+    [7, 1, 3, 9, 2, 4, 8, 5, 6],
+    [9, 6, 1, 5, 3, 7, 2, 8, 4],
+    [2, 8, 7, 4, 1, 9, 6, 3, 5],
+    [3, 4, 5, 2, 8, 6, 1, 7, 9]
+  ];
+
+  const board = new SudokuBoard(completed);
+  const originalBoard = board.clone();
+  const result = SudokuSolver.solve(board);
+
+  assert.equal(result, true, "already completed board should return true");
+  assert.equal(board.isEqual(originalBoard), true, "board should remain unchanged");
+});
